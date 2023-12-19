@@ -1,5 +1,6 @@
 package pages;
 
+import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -78,4 +79,19 @@ public class BasePage {
         String cellToFill = locator + "//table/tbody/tr[" + row + "]/td[" + column + "]";
         find(cellToFill).sendKeys(stringToSend);
     }
+
+    public void switchToiFrame(String iFrameIndex){
+        driver.switchTo().frame(iFrameIndex);
+    }
+
+    public void switchToParentFrame(){
+        driver.switchTo().parentFrame();
+    }
+
+    public void dismissAlert(){
+        driver.switchTo().alert().dismiss();
+    }
+
+
+
 }
