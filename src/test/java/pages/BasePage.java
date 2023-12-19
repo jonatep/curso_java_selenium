@@ -1,7 +1,10 @@
 package pages;
 
+import java.util.List;
+
 import org.junit.Assert;
 import org.openqa.selenium.By;
+import org.openqa.selenium.NoAlertPresentException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -89,9 +92,27 @@ public class BasePage {
     }
 
     public void dismissAlert(){
-        driver.switchTo().alert().dismiss();
+        try{
+            driver.switchTo().alert().dismiss();
+        }catch(NoAlertPresentException e){
+            e.printStackTrace();
+        }
+        
     }
 
+    public String textFromElement(String locator){
+        return find(locator).getText();
+    }
 
+    public boolean elementIsDisplayed(String locator){
+        return find(locator).isDisplayed(); 
+    }
 
+    public boolean elementIsSelected(String locator){
+        return find(locator).isSelected();
+    }
+
+    public List<WebElement> bringAllElements(String locator){
+        return driver.findElements(By.className(locator));
+    }
 }
