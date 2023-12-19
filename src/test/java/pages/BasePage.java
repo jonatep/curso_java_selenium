@@ -12,10 +12,10 @@ public class BasePage {
 
 
     static {
+        System.setProperty("webdriver.chrome.driver", "C:\\selenium\\chromedriver.exe");
         ChromeOptions chromeOptions = new ChromeOptions();
         driver = new ChromeDriver(chromeOptions);
         wait = new WebDriverWait(driver, 10);
-        System.setProperty("webdriver.chrome.driver", "../../../../chrome-win64/chrome-win64");
     }
 
     public BasePage(WebDriver driver) {
