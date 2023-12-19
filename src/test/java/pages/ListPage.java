@@ -19,9 +19,9 @@ public class ListPage extends BasePage {
         navigateTo("https://demoqa.com/books");
     }
 
-    public void enterSearchCriteria() {
+    public void enterSearchCriteria(String searchText) {
         try{
-            write(searchField, "JavaScript");    
+            write(searchField, searchText);    
         }catch(NoSuchElementException e){
             System.out.println("The WebElement Search Field couldn't be found");
             e.printStackTrace();

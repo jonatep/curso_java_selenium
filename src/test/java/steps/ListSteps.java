@@ -16,14 +16,14 @@ public class ListSteps {
     public void navigateToListPage(){
         listPage.navigateToListPage();
     }
-    @When("^I search on the list$")
-    public void enterTextForSearch(){
-        listPage.enterSearchCriteria();
+    @When("^I search (.+) in the list$")
+    public void enterTextForSearch(String searchText){
+        listPage.enterSearchCriteria(searchText);
     }
-    @Then("^I can find the text in the list$")
-    public void checkTextExists(){
+    @Then("^I can find (.+) in the list$")
+    public void checkTextExists(String textToCheck){
         List<String> listResults = listPage.getAllSearchResults();
-        boolean textIsHere = listResults.contains("Axel Rauschmayer");
+        boolean textIsHere = listResults.contains(textToCheck);
         Assert.assertTrue("El texto buscado no ha sido encontrado", textIsHere);
     }
 
