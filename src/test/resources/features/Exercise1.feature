@@ -1,4 +1,3 @@
-@Test
 Feature: Test navigation around the Amazon website
 
 Scenario Outline: Scenario Exercise 1: As a tester, I want to validate that an item in the Amazon Website, from an specific page, and an specific order, exists for purchase.

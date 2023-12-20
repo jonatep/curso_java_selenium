@@ -140,6 +140,10 @@ public class BasePage {
     }
 
     public Integer getNumElements(String locator){
-        return find(locator).getSize().getHeight();
+        return driver.findElements(By.xpath(locator)).size();
+    }
+
+    public String getTextFromLocator(String locator){
+        return find(locator).getText();
     }
 }
