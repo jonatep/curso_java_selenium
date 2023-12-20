@@ -30,6 +30,7 @@ public class Exercise1Steps {
     @Then("^I can assert if the item is available for purchase$")
     public void checkItemIsPurchable(){
         Assert.assertTrue(amazonPage.isItemPurchable());
+        Assert.assertTrue(amazonPage.hasItemBeenAddedToCart());
     }
 
 

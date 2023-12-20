@@ -8,6 +8,7 @@ public class Exercise1Page extends BasePage {
     private String submitSearchButton = "//input[@id='nav-search-submit-button']";
     private String numberedItemAmazon = "(//div[@data-component-type='s-search-result'][NUMITEM]//a[contains(@class, 'a-link-normal')])[1]";
     private String cartButton = "//input[@id='add-to-cart-button']";
+    private String addedToCartMessage = "//div[@id='NATC_SMART_WAGON_CONF_MSG_SUCCESS']";
 
     public Exercise1Page () {
         super(driver);
@@ -40,9 +41,20 @@ public class Exercise1Page extends BasePage {
 
     public boolean isItemPurchable(){
         try{
-            hoverOverElement(cartButton);
+            clickElement(cartButton);
         }catch(NoSuchElementException e){
             System.out.println("The item isn't abailable for purchase, as no 'Add to Cart' button exists");
+            e.printStackTrace();
+            return false;
+        }
+        return true;
+    }
+
+    public boolean hasItemBeenAddedToCart(){
+        try{
+            clickElement(addedToCartMessage);
+        }catch(NoSuchElementException e){
+            System.out.println("The message confirmation for adding an item to the cart isn't displayed");
             e.printStackTrace();
             return false;
         }
