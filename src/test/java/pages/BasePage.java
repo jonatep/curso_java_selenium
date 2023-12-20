@@ -138,4 +138,8 @@ public class BasePage {
             driver.get(getCurrentUrl() + pageUrl);
         }
     }
+
+    public Integer getNumElements(String locator){
+        return find(locator).getSize().getHeight();
+    }
 }
