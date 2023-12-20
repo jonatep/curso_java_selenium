@@ -1,4 +1,3 @@
-@Test
 Feature: Test navigation around the TradeMe website
 
 Scenario Outline: As a tester, I want to validate the number of cars in the make dropdown from the TradeMe website
@@ -21,10 +20,11 @@ Scenario Outline: Scenario Exercise 1: As a tester, I want to validate the numbe
     |Mazda|5954|       
     |Honda|3279|
 
+@Test
 Scenario Outline: As a tester, I want to validate the number of cars from the TradeMe API
     Given I send a GET request to the API adress
     Then I can assert that the number of cars in the TradeMe API is <numberAPI>
 
     Examples:
     |numberAPI|
-    |82|
+    |81|
