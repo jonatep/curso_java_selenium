@@ -11,3 +11,4 @@ Scenario Outline: Scenario Exercise 1: As a tester, I want to validate that an i
     Examples:
     |item|numberPage|numberItem|
     |Alexa|2        |3         |
+    |Zelda|5        |5         |

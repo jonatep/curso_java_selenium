@@ -1,7 +1,5 @@
 package steps;
 
-import org.junit.Assert;
-
 import cucumber.api.java.en.*;
 import pages.GooglePage;
 

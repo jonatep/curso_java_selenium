@@ -2,7 +2,6 @@ package pages;
 
 import java.util.List;
 
-import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoAlertPresentException;
 import org.openqa.selenium.WebDriver;
@@ -13,6 +12,8 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import java.util.regex.Pattern;
+import java.util.regex.Matcher;
 
 public class BasePage {
 
@@ -25,6 +26,7 @@ public class BasePage {
         ChromeOptions chromeOptions = new ChromeOptions();
         driver = new ChromeDriver(chromeOptions);
         wait = new WebDriverWait(driver, 10);
+        action = new Actions(driver);
     }
 
     public BasePage(WebDriver driver) {
@@ -118,5 +120,22 @@ public class BasePage {
 
     public List<WebElement> bringAllElements(String locator){
         return driver.findElements(By.className(locator));
+    }
+
+    public String getCurrentUrl(){
+        return driver.getCurrentUrl();
+    }
+
+    public void goToNumberedPage(Integer page){
+        String pageUrl = "&page=" + page;
+        Pattern r = Pattern.compile("&page=(\\d*)");
+        Matcher m = r.matcher(getCurrentUrl());
+
+        if (m.find()){
+            driver.get(getCurrentUrl().replaceFirst(m.group(1), page.toString()));
+        }
+        else{
+            driver.get(getCurrentUrl() + pageUrl);
+        }
     }
 }
