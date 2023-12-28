@@ -21,17 +21,22 @@ public class BasePage {
     private static WebDriverWait wait;
     private static Actions action;
 
-    static {
-        System.setProperty("webdriver.chrome.driver", "C:\\selenium\\chromedriver.exe");
-        ChromeOptions chromeOptions = new ChromeOptions();
-        driver = new ChromeDriver(chromeOptions);
-        wait = new WebDriverWait(driver, 10);
-        action = new Actions(driver);
+    static{
+        initializeDriver();
+        closeBrowser();
     }
 
     public BasePage(WebDriver driver) {
         BasePage.driver = driver;
         wait = new WebDriverWait(driver, 10);
+    }
+
+    public static void initializeDriver() {
+        System.setProperty("webdriver.chrome.driver", "C:\\selenium\\chromedriver.exe");
+        ChromeOptions chromeOptions = new ChromeOptions();
+        driver = new ChromeDriver(chromeOptions);
+        wait = new WebDriverWait(driver, 10);
+        action = new Actions(driver);
     }
 
     public static void navigateTo(String url) {

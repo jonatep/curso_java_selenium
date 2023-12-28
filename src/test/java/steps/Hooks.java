@@ -6,6 +6,7 @@ import org.openqa.selenium.TakesScreenshot;
 import cucumber.api.Scenario;
 
 import cucumber.api.java.After;
+import cucumber.api.java.Before;
 import pages.BasePage;
 
 public class Hooks extends BasePage {
@@ -14,8 +15,14 @@ public class Hooks extends BasePage {
         super(driver);
     }
 
+    @Before
+    public void initializeDriver(Scenario scenario){
+        BasePage.initializeDriver();
+    }
+
     @After
-    public void tearDown(Scenario scenario) {
+    public void tearDownAndClose(Scenario scenario) {
+        BasePage.closeBrowser();
         if(scenario.isFailed()){
             scenario.write("Ha habido un fallo");
             final byte[] screenshot = ((TakesScreenshot) driver)
@@ -23,7 +30,5 @@ public class Hooks extends BasePage {
             scenario.embed(screenshot, "image/png");
         }
     }
-    
-   
 
 }
