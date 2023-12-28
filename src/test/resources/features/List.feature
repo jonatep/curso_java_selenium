@@ -1,3 +1,4 @@
+@Test
 Feature: Test iteration in lists
 
 Scenario Outline: Scenario Outline name: As a tester, I want to validate that a text is present inside the list.
