@@ -1,3 +1,4 @@
+@Test
 Feature: Test different actions on a sandbox page.
 
 Scenario: As a tester, I try out different actions on a sandbox page.
