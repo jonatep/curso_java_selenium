@@ -8,7 +8,13 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.edge.EdgeDriver;
+import org.openqa.selenium.edge.EdgeOptions;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.safari.SafariDriver;
+import org.openqa.selenium.safari.SafariOptions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -22,7 +28,7 @@ public class BasePage {
     private static Actions action;
 
     static{
-        initializeDriver();
+        initializeDriver("Chrome");
         closeBrowser();
     }
 
@@ -31,10 +37,37 @@ public class BasePage {
         wait = new WebDriverWait(driver, 10);
     }
 
-    public static void initializeDriver() {
-        System.setProperty("webdriver.chrome.driver", "C:\\selenium\\chromedriver.exe");
-        ChromeOptions chromeOptions = new ChromeOptions();
-        driver = new ChromeDriver(chromeOptions);
+    public static void initializeDriver(String browser) {
+
+        switch (browser) {
+            case "Chrome":
+                System.setProperty("webdriver.chrome.driver", "C:\\selenium\\chromedriver.exe");
+                ChromeOptions chromeOptions = new ChromeOptions();
+                driver = new ChromeDriver(chromeOptions);
+                break;
+            
+            case "Firefox":
+                System.setProperty("webdriver.gecko.driver", "C:\\geckodriver\\geckodriver.exe");
+                FirefoxOptions firefoxOptions = new FirefoxOptions();
+                driver = new FirefoxDriver(firefoxOptions);
+                break;
+            
+            case "Safari":
+                SafariOptions safariOptions = new SafariOptions();
+                driver = new SafariDriver(safariOptions);
+                break;
+
+            case "Edge":
+                EdgeOptions edgeOptions = new EdgeOptions();
+                driver = new EdgeDriver(edgeOptions);
+                break;
+        
+            default:
+                System.out.println("El navegador seleccionado no es compatible");
+                break;
+        }
+
+
         wait = new WebDriverWait(driver, 10);
         action = new Actions(driver);
     }
