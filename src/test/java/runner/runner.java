@@ -1,5 +1,6 @@
 package runner;
 
+import org.junit.BeforeClass;
 import org.junit.AfterClass;
 import org.junit.runner.RunWith;
 import cucumber.api.junit.Cucumber;
@@ -15,6 +16,13 @@ import cucumber.api.CucumberOptions;
 )
 
 public class runner{
+
+    @BeforeClass
+    public static void initializeBrowser(){
+        System.setProperty("browser", "Chrome");
+        System.setProperty("timeout", "3");
+    }
+
     @AfterClass
     public static void cleanDriver(){
         BasePage.closeBrowser();

@@ -28,13 +28,13 @@ public class BasePage {
     private static Actions action;
 
     static{
-        initializeDriver("Chrome");
+        initializeDriver(System.getProperty("browser"));
         closeBrowser();
     }
 
     public BasePage(WebDriver driver) {
         BasePage.driver = driver;
-        wait = new WebDriverWait(driver, 10);
+        wait = new WebDriverWait(driver, Long.parseLong(System.getProperty("timeout")));
     }
 
     public static void initializeDriver(String browser) {
@@ -68,7 +68,7 @@ public class BasePage {
         }
 
 
-        wait = new WebDriverWait(driver, 10);
+        wait = new WebDriverWait(driver, Long.parseLong(System.getProperty("timeout")));
         action = new Actions(driver);
     }
 

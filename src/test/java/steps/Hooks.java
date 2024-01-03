@@ -17,7 +17,7 @@ public class Hooks extends BasePage {
 
     @Before
     public void initializeDriver(Scenario scenario){
-        BasePage.initializeDriver("Chrome");
+        BasePage.initializeDriver(System.getProperty("browser"));
     }
 
     @After
