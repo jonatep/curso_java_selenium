@@ -17,10 +17,13 @@ import cucumber.api.CucumberOptions;
 
 public class runner{
 
+    private static String DESIRED_BROWSER = "Chrome";
+    private static String DESIRED_TIMEOUT = "3";
+
     @BeforeClass
     public static void initializeBrowser(){
-        System.setProperty("browser", "Chrome");
-        System.setProperty("timeout", "3");
+        System.setProperty("browser", DESIRED_BROWSER);
+        System.setProperty("timeout", DESIRED_TIMEOUT);
     }
 
     @AfterClass

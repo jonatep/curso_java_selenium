@@ -35,4 +35,5 @@ testImplementation group: 'io.rest-assured', name: 'rest-assured', version: '5.4
 
 test{
     systemProperty "cucumber.options", System.getProperty("cucumber.options")
+    systemProperty "browser", System.getProperty("browser")
 }
